@@ -108,7 +108,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     const emailvalid = (rule, value, callback) => {
       const ref = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
       if (!ref.test(value)) {
@@ -215,13 +215,13 @@ export default {
     editUsers(id) {
       this.$refs.editFormRef.validate(async valid => {
         if (!valid) return;
-        const { data } = await this.$axios.put("users/" + id, {
+        const { data } = await this.$axios.put('users/' + id, {
           email: this.editForm.email,
           mobile: this.editForm.mobile
-        });
-        if (data.meta.status != 200) return;
-        this.getUserList();
-        this.EditDialogVisible = false;
+        })
+        if (data.meta.status !== 200) return
+        this.getUserList()
+        this.EditDialogVisible = false
         this.$msg.success("修改成功");
       });
     },
